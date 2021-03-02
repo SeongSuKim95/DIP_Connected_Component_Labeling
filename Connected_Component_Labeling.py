@@ -8,21 +8,12 @@ import timeit
 def main():
 
     img = cv2.imread('pollen.bmp',cv2.IMREAD_GRAYSCALE)
-    #######################################################
-    #np_where()
-    #img = fast_Connected_component_labeling(img)
-    #img1 = fast_Connected_component_labeling_flatten(img)
-    #img1 = Color_allocation_np(img1)
-    #cv2.imshow('d', img1)
-    #cv2.waitKey(0)
     img2 = fast_Connected_component_labeling_flatten_true(img)
     img2 = Color_allocation_np(img2)
     cv2.imwrite('pollen_fastest.jpg',img2)
     cv2.imshow('e',img2)
-    #######################################################
     cv2.waitKey(0)
-    #cv2.imshow('d', img1)
-    #cv2.imwrite('symbol_fccl.jpg',img)
+
 
     return
 
@@ -52,8 +43,7 @@ def four_Connected_component_labeling(img):
                         Labeled_img[i][j] = Labeled_img[i-1][j]
                         pair_list.append((Labeled_img[i-1][j],Labeled_img[i][j-1]))
                         pair_max.append(Labeled_img[i][j-1])
-                    #elif Labeled_img[i][j - 1] != 0 and Labeled_img[i - 1][j] != 0 and Labeled_img[i][j-1] == Labeled_img[i-1][j]:
-                     #  Labeled_img[i][j] = Labeled_img[i][j-1]
+
 
     pair_list = list(set(pair_list))
     pair_max = list(set(pair_max))
@@ -80,10 +70,7 @@ def four_Connected_component_labeling(img):
 
     stop = timeit.default_timer()
     print(stop - start)
-#    for i in range(y):
- #       for j in range(x):
-  #          for k in range(len(disjoint.data)):
-   ##                Labeled_img[i][j] = disjoint.data[k]
+
 
     return Labeled_img
 
@@ -176,10 +163,6 @@ def Eight_Connected_component_labeling(img):
     for k in range(len(pair_list)):
         disjoint.union(pair_list[k][0],pair_list[k][1])
 
-    #disjoint = Disjointset(max(pair_max)+1)
-
-    #for k in range(len(pair_list)):
-        #disjoint.union(pair_list[k][0],pair_list[k][1])
 
     for i in range(y):
         for j in range(x):
@@ -192,16 +175,13 @@ def Eight_Connected_component_labeling(img):
 
 def fast_Connected_component_labeling(img) :
 
-
-#########################################################
     img = np.array(img, dtype='int16')
     y, x = img.shape
     Labeled_img = np.zeros((y, x + 1), dtype='int16')
     cnt = 1
     pair_list = []
     pair_list = np.array(pair_list,dtype ='int16')
-########################################################## 0.0001
-##########################################################
+
     start = timeit.default_timer()
     for i in range(y):
         for j in range(x):
@@ -224,7 +204,6 @@ def fast_Connected_component_labeling(img) :
                         cnt += 1
     stop = timeit.default_timer()
     print(stop - start)
-######################################################### 0.30
 
     pair_max = np.max(pair_list)
     pair_list = pair_list.reshape((int(pair_list.shape[0]/2),2))
@@ -246,32 +225,19 @@ def fast_Connected_component_labeling(img) :
     Labeled_img = Labeled_img.reshape(y, x+1)
     Labeled_img = Labeled_img[:,:x]
 
-#########################################################0.002
-
-
-#    for i in range(y):
-    #       for j in range(x):
-    #          for k in range(len(disjoint.data)):
-    ##                Labeled_img[i][j] = disjoint.data[k]
 
     return Labeled_img
 
 def fast_Connected_component_labeling_flatten(img) :
 
-
-#########################################################
     img = np.array(img, dtype='int16')
     y, x = img.shape
     img = img.flatten()
     Labeled_img = np.zeros_like(img)
-
-
     cnt = 1
     pair_list = []
     pair_list = np.array(pair_list,dtype ='int16')
 
-########################################################## 0.0001
-##########################################################
     start = timeit.default_timer()
     for i in range(Labeled_img.shape[0]):
                 if img[i] != 0:
@@ -294,7 +260,7 @@ def fast_Connected_component_labeling_flatten(img) :
 
     stop = timeit.default_timer()
     print(stop - start)
-######################################################### 0.30
+
 
     pair_max = np.max(pair_list)
     pair_list = pair_list.reshape((int(pair_list.shape[0]/2),2))
@@ -303,15 +269,11 @@ def fast_Connected_component_labeling_flatten(img) :
     for p in range(len(pair_list)):
         disjoint.union(pair_list[p][0], pair_list[p][1])
 
-###########################################################
-    #Labeled_img = Labeled_img.flatten()
 
     disjoint.data = np.array(disjoint.data, dtype='int16')
     data_set = list(set(disjoint.data))
 
 
-
-############################################################
     start = timeit.default_timer()
     for h in range(1, len(data_set)):
         disjoint_index = np.where(disjoint.data == data_set[h])
@@ -325,19 +287,11 @@ def fast_Connected_component_labeling_flatten(img) :
     stop = timeit.default_timer()
     print(stop - start)
 
-#########################################################
-
-
-#    for i in range(y):
-    #       for j in range(x):
-    #          for k in range(len(disjoint.data)):
-    ##                Labeled_img[i][j] = disjoint.data[k]
 
     return Labeled_img
 
 def fast_Connected_component_labeling_flatten_true(img):
 
-    #########################################################
     img = np.array(img, dtype='int16')
     y, x = img.shape
     img = img.flatten()
@@ -348,8 +302,7 @@ def fast_Connected_component_labeling_flatten_true(img):
     pair_list = np.array(pair_list, dtype='int16')
     img_true = np.where(img > 0)
     img_true = np.asarray(img_true)
-    ########################################################## 0.001
-    ##########################################################
+
     start = timeit.default_timer()
     for i in range(img_true.shape[1]):
             v = img_true[0][i]
@@ -374,7 +327,6 @@ def fast_Connected_component_labeling_flatten_true(img):
     stop = timeit.default_timer()
     print(stop - start)
 
-    ######################################################### 0.30
     start = timeit.default_timer()
     disjoint = Disjointset_pc(np.max(pair_list) + 1)
 
@@ -383,7 +335,7 @@ def fast_Connected_component_labeling_flatten_true(img):
 
     stop = timeit.default_timer()
     print(stop - start)
-    ##########################################################
+
     start = timeit.default_timer()
     disjoint.data = np.array(disjoint.data, dtype='int16')
     disjoint_linear = np.arange(disjoint.data.shape[0])
@@ -395,22 +347,9 @@ def fast_Connected_component_labeling_flatten_true(img):
         b = np.asarray(b)
         Labeled_img[b] = disjoint.data[c]
 
-    #for h in range(1,data_set.shape[0]):
-    #    disjoint_index = np.where(disjoint.data == data_set[h])
-    #    disjoint_index = np.asarray(disjoint_index)
-    #    data_set_h = data_set[h]
-    #    for t in range (disjoint_index.shape[1]):
-    #        Labeled_img[Labeled_img == disjoint_index[0][t]] = data_set_h
-
     Labeled_img = Labeled_img.reshape(y, x)
     stop = timeit.default_timer()
     print(stop - start)
-    #########################################################
-
-    #    for i in range(y):
-    #       for j in range(x):
-    #          for k in range(len(disjoint.data)):
-    ##                Labeled_img[i][j] = disjoint.data[k]
 
     return Labeled_img
 
@@ -606,13 +545,6 @@ class Disjointset:
 
         self.data[self.data == y] = x
 
-def np_where():
-    a=[1,2,3,4]
-    a= np.array(a,dtype= np.uint8)
-    a= np.where(a>2,2,-2)
-
-    print(a)
-    return
 main()
 
 
