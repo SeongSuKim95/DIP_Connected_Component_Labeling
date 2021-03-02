@@ -1,4 +1,4 @@
-
+## DIP Connected component labeling
 # This repository is python code of connected component labeling 
 
 * Union and find Algorithm
