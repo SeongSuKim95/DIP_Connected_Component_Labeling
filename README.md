@@ -58,11 +58,9 @@
     ```
 * Connected component labeling
     * Four connected component labeling(4-CCL)
-      
-      * Original image
-      ![original](https://user-images.githubusercontent.com/62092317/106533707-01eed200-6536-11eb-9791-48681df419d2.PNG)
-      * Low pass filter
-      ![low_box](https://user-images.githubusercontent.com/62092317/106533689-fdc2b480-6535-11eb-9bfd-5ed3490adc85.PNG)
+      * Original image & Result
+        ![4_connected_component_labeling1](https://user-images.githubusercontent.com/62092317/109629530-41d1c500-7b87-11eb-9a00-c59f13918a34.PNG)
+        ![4_connected_component_labeling2](https://user-images.githubusercontent.com/62092317/109629538-4302f200-7b87-11eb-858f-8e7a4fd5b166.PNG)
       ```python
       def four_Connected_component_labeling(img):
         start = timeit.default_timer()
@@ -123,19 +121,8 @@
         return Labeled_img
        ```   
    * Eight connected component labeling(8-CCL)
-      * Before Normalizing
-      ![Laplacian](https://user-images.githubusercontent.com/62092317/106533685-fd2a1e00-6535-11eb-926c-bd97658ffbbe.PNG)
-
-      * After Nomalizing
-
-      * Sharpening with normal laplacian filter
-      ![Sharpening1](https://user-images.githubusercontent.com/62092317/106533713-02876880-6536-11eb-9ad1-77bbd3a69897.PNG)
-
-      * Sharpening with diagonal laplacian filter
-      ![Sharpening2](https://user-images.githubusercontent.com/62092317/106533716-031fff00-6536-11eb-854c-b817cba66683.PNG)
-
-      * Comparison between normal & diagonal laplacian filter
-      ![Sharpening](https://user-images.githubusercontent.com/62092317/106533709-01eed200-6536-11eb-9e4f-53dca2d3b200.PNG)
+      * Original image & Result
+        ![8_connected_component_labeling](https://user-images.githubusercontent.com/62092317/109629540-439b8880-7b87-11eb-8291-460919a8b42d.PNG)
       ```python
       def Eight_Connected_component_labeling(img):
 
@@ -236,9 +223,12 @@
 
         return Labeled_img
       ```
-    * Fast connected component labeling
-      ![Sobel](https://user-images.githubusercontent.com/62092317/106533719-03b89580-6536-11eb-96e5-c9ccb0a80ffb.PNG)
-      ![Sobel_vertical_horizontal](https://user-images.githubusercontent.com/62092317/106533722-04512c00-6536-11eb-9b3b-a70fab8fe350.PNG)
+   * Fast connected component labeling
+      * Algorithm
+      ![Fast ccl_1](https://user-images.githubusercontent.com/62092317/109741791-24493d80-7c11-11eb-9e8d-f25dad03ede3.PNG)
+      ![Fast ccl_2](https://user-images.githubusercontent.com/62092317/109741798-257a6a80-7c11-11eb-9201-2e6bb9b70780.PNG)
+      ![Fast ccl_3](https://user-images.githubusercontent.com/62092317/109741800-257a6a80-7c11-11eb-8020-011039295e2a.PNG)
+      * Code
       ```python
             img = np.array(img, dtype='int16')
         y, x = img.shape
@@ -293,6 +283,10 @@
 
         return Labeled_img
       ```
-    
-#See details in [HERE](https://github.com/SeongSuKim95/DIP_Various_Filter/blob/master/Spatial_and_Frequency_filter.pdf)
+   * Optimization result
+     ![Optimization](https://user-images.githubusercontent.com/62092317/109629543-439b8880-7b87-11eb-8c98-e0f879754449.PNG)
+     ![Pollen_Optimization](https://user-images.githubusercontent.com/62092317/109629546-44341f00-7b87-11eb-810b-e5db0e0c2cca.PNG)
+     ![Result_for_otherimage](https://user-images.githubusercontent.com/62092317/109629552-44341f00-7b87-11eb-8ec1-c446b7022571.PNG)
+
+#See details in [HERE](
 
