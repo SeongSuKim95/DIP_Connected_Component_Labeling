@@ -1,4 +1,4 @@
-## DIP Connected component labeling
+## Connected component labeling
 # This repository is python code of connected component labeling 
 
 * Union and find Algorithm
@@ -288,5 +288,6 @@
      ![Pollen_Optimization](https://user-images.githubusercontent.com/62092317/109629546-44341f00-7b87-11eb-810b-e5db0e0c2cca.PNG)
      ![Result_for_otherimage](https://user-images.githubusercontent.com/62092317/109629552-44341f00-7b87-11eb-8ec1-c446b7022571.PNG)
 
-#See details in [HERE](
+
+#See details in [HERE](https://github.com/SeongSuKim95/DIP_Connected_Component_Labeling/blob/master/Connected_component_labeling.pdf)
 
